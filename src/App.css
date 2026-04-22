@@ -1,0 +1,12 @@
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+canvas {
+  transform: scaleX(-1); 
+}
