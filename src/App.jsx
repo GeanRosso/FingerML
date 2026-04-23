@@ -36,21 +36,20 @@ function App() {
       canvasCtx.save();
       canvasCtx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
 
-      if (results.multiHandLandmarks) {
-        for (const landmarks of results.multiHandLandmarks) {
-          window.drawConnectors(canvasCtx, landmarks, window.Hands.HAND_CONNECTIONS, {
-            color: '#00FF00',
-            lineWidth: 5
-          });
-          window.drawLandmarks(canvasCtx, landmarks, {
-            color: '#FF0000',
-            lineWidth: 2
-          });
-        }
-      }
-      canvasCtx.restore();
+ if (results.multiHandLandmarks) {
+  for (const landmarks of results.multiHandLandmarks) {
+    window.drawConnectors(canvasCtx, landmarks, window.HAND_CONNECTIONS || window.Hands.HAND_CONNECTIONS, {
+      color: '#00FF00',
+      lineWidth: 2 // Try a smaller width to see if it renders better
     });
-
+    
+    window.drawLandmarks(canvasCtx, landmarks, {
+      color: '#FF0000',
+      radius: 3 
+    });
+  }
+}
+    });
    
     if (videoRef.current) {
       const camera = new window.Camera(videoRef.current, {
